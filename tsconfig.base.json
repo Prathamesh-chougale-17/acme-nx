@@ -8,12 +8,19 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "target": "es2015",
+    "target": "es2022",
     "module": "esnext",
-    "lib": ["es2020", "dom"],
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "lib": ["es2022", "dom", "dom.iterable"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "paths": {}
+    "paths": {
+      "@acme/ui": ["./packages/ui/src/index.ts"],
+      "@acme/ui/components/*": ["./packages/ui/src/components/*.tsx"],
+      "@acme/ui/hooks/*": ["./packages/ui/src/hooks/*.ts"],
+      "@acme/ui/lib/*": ["./packages/ui/src/lib/*.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

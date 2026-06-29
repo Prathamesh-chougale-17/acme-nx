@@ -1,11 +1,6 @@
 {
   "name": "web",
   "private": true,
-  "imports": {
-    "#components/*": "./components/*.tsx",
-    "#hooks/*": "./hooks/*.ts",
-    "#lib/*": "./lib/*.ts"
-  },
   "dependencies": {
     "@acme/ui": "workspace:*",
     "next": "~16.1.7",

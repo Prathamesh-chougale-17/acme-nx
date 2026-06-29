@@ -3,6 +3,9 @@ packages:
   - packages/*
 
 autoInstallPeers: true
+overrides:
+  js-yaml: 5.2.0
+  postcss: 8.5.16
 allowBuilds:
   '@parcel/watcher': true
   '@swc/core': true
@@ -10,3 +13,5 @@ allowBuilds:
   nx: true
   sharp: true
   unrs-resolver: true
+minimumReleaseAgeExclude:
+  - postcss@8.5.16

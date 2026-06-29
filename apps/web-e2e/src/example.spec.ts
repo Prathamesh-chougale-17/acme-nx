@@ -1,8 +1,15 @@
 import { test, expect } from '@playwright/test';
 
-test('has title', async ({ page }) => {
+test('shows the dashboard home', async ({ page }) => {
   await page.goto('/');
 
-  await expect(page.locator('h1')).toContainText('Shared UI is ready');
-  await expect(page.getByRole('button', { name: 'Shared Button' })).toBeVisible();
+  await expect(
+    page.getByRole('heading', {
+      name: 'One polished surface for every shared component.',
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole('button', { name: 'Open board' }),
+  ).toBeVisible();
+  await expect(page.getByText('Workspace pulse')).toBeVisible();
 });

@@ -1,4 +1,5 @@
 import '@acme/ui/globals.css';
+import { TooltipProvider } from '@acme/ui/components/tooltip';
 
 export const metadata = {
   title: 'Welcome to web',
@@ -12,7 +13,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className="min-h-screen antialiased">
+        <TooltipProvider>{children}</TooltipProvider>
+      </body>
     </html>
   );
 }

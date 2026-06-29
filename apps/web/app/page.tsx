@@ -63,18 +63,21 @@ const stats = [
     value: '60',
     delta: '+18 this week',
     icon: ComponentIcon,
+    tone: 'border-sky-400/20 bg-sky-400/5 text-sky-300',
   },
   {
     label: 'Apps connected',
     value: '03',
     delta: 'web, admin, docs',
     icon: Layers3Icon,
+    tone: 'border-amber-400/20 bg-amber-400/5 text-amber-300',
   },
   {
     label: 'Build health',
     value: '99%',
     delta: 'remote cache active',
     icon: ActivityIcon,
+    tone: 'border-emerald-400/20 bg-emerald-400/5 text-emerald-300',
   },
 ];
 
@@ -110,16 +113,19 @@ const activity = [
     icon: PackageCheckIcon,
     title: 'Registry-ready UI package',
     detail: '@acme/ui exports components, hooks, lib, and globals.',
+    tone: 'bg-sky-400/10 text-sky-300',
   },
   {
     icon: ShieldCheckIcon,
     title: 'Dependency audit clean',
     detail: 'Moderate-and-above advisories are clear in pnpm audit.',
+    tone: 'bg-emerald-400/10 text-emerald-300',
   },
   {
     icon: RocketIcon,
     title: 'Next production build',
     detail: 'Turbopack build passes with React 19.2.',
+    tone: 'bg-amber-400/10 text-amber-300',
   },
 ];
 
@@ -184,14 +190,19 @@ export default function Index() {
               {stats.map((item) => (
                 <div
                   key={item.label}
-                  className="rounded-xl border bg-background/45 p-4"
+                  className={`rounded-xl border p-4 ${item.tone}`}
                 >
                   <div className="mb-5 flex items-center justify-between">
-                    <item.icon className="size-4 text-primary" />
-                    <Badge variant="outline">{item.delta}</Badge>
+                    <item.icon className="size-4" />
+                    <Badge
+                      variant="outline"
+                      className="border-current/20 bg-background/35 text-current"
+                    >
+                      {item.delta}
+                    </Badge>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-3xl font-semibold tabular-nums">
+                    <p className="text-3xl font-semibold tabular-nums text-foreground">
                       {item.value}
                     </p>
                     <p className="text-sm text-muted-foreground">
@@ -269,8 +280,8 @@ export default function Index() {
               </CardAction>
             </CardHeader>
             <CardContent>
-              <Tabs defaultValue="releases" className="gap-5">
-                <TabsList>
+              <Tabs defaultValue="releases" className="flex-col gap-5">
+                <TabsList className="w-full justify-start overflow-x-auto rounded-xl bg-secondary/70 sm:w-fit">
                   <TabsTrigger value="releases">
                     <CalendarCheckIcon data-icon="inline-start" />
                     Releases
@@ -292,7 +303,9 @@ export default function Index() {
                         <TableHead>Track</TableHead>
                         <TableHead>Owner</TableHead>
                         <TableHead>Status</TableHead>
-                        <TableHead className="text-right">Date</TableHead>
+                        <TableHead className="hidden text-right sm:table-cell">
+                          Date
+                        </TableHead>
                       </TableRow>
                     </TableHeader>
                     <TableBody>
@@ -313,7 +326,7 @@ export default function Index() {
                               {release.status}
                             </Badge>
                           </TableCell>
-                          <TableCell className="text-right text-muted-foreground">
+                          <TableCell className="hidden text-right text-muted-foreground sm:table-cell">
                             {release.date}
                           </TableCell>
                         </TableRow>
@@ -370,7 +383,9 @@ export default function Index() {
               {activity.map((item, index) => (
                 <div key={item.title}>
                   <div className="flex gap-3">
-                    <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-secondary text-secondary-foreground">
+                    <div
+                      className={`flex size-9 shrink-0 items-center justify-center rounded-xl ${item.tone}`}
+                    >
                       <item.icon className="size-4" />
                     </div>
                     <div className="min-w-0 space-y-1">

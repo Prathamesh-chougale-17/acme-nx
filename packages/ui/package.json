@@ -7,6 +7,7 @@
     ".": "./src/index.ts",
     "./globals.css": "./src/styles/globals.css",
     "./components/*": "./src/components/*.tsx",
+    "./components/icons": "./src/components/icons.tsx",
     "./hooks/*": "./src/hooks/*.ts",
     "./lib/*": "./src/lib/*.ts"
   },
